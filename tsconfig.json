@@ -1,15 +1,14 @@
 {
   "compilerOptions": {
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
     "esModuleInterop": true,
-    "sourceMap": true,
     "module": "commonjs",
     "target": "esnext",
     "outDir": "dist",
     "baseUrl": "./src",
     "paths": {
-      "@/*": ["./*"]
+      "@providers/*": ["providers/*"],
+      "@repositories/*": ["repositories/*"],
+      "@entities/*": ["entities/*"]
     }
   },
   "exclude": ["node_modules"],
