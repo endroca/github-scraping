@@ -1,4 +1,4 @@
-interface IFileListResponse {
+export interface IFileListResponse {
   name: string;
   extension: string;
   href: string;

@@ -8,8 +8,9 @@ export class HTMLParserFileListProvider implements IFileListProvider {
   fetch = (html: string): IFileListBodyResponse => {
     const dom = parse(html);
 
-    const filterCommits = dom.querySelector('a.text-mono');
-    const lastCommit = filterCommits.rawText;
+    // Bug
+    // const filterCommits = dom.querySelector('a.text-mono');
+    // const lastCommit = filterCommits.rawText;
 
     const filterFiles = dom.querySelectorAll(
       '.Box-row.Box-row--focus-gray.py-2.d-flex.position-relative.js-navigation-item'
@@ -23,10 +24,10 @@ export class HTMLParserFileListProvider implements IFileListProvider {
         name: a.rawText,
         extension: a.rawText.split('.').pop(),
         href: a.attributes.href,
-        type: svg.attributes['aria-label'],
+        type: svg.attributes['aria-label'] as 'Directory' | 'File',
       };
     });
 
-    return { lastCommit, files };
+    return { lastCommit: null, files };
   };
 }

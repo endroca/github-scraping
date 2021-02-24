@@ -7,6 +7,8 @@ export class File {
 
   public extension: string;
 
+  public href: string;
+
   public length: string;
 
   public size: string;

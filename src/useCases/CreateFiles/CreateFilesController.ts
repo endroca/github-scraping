@@ -8,8 +8,8 @@ export class CreateFilesController {
     const { url } = request.query;
 
     try {
-      await this.createFilesUseCase.execute({ url: String(url) });
-      return response.status(200).send();
+      const data = await this.createFilesUseCase.execute({ url: String(url) });
+      return response.json(data);
     } catch (error) {
       console.error(error);
       return response
