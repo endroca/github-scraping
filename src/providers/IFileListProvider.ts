@@ -6,7 +6,7 @@ export interface IFileListResponse {
 }
 
 export interface IFileListBodyResponse {
-  lastCommit: string;
+  lastCommit: string; // future implementation
   files: IFileListResponse[];
 }
 

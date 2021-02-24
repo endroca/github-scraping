@@ -8,7 +8,7 @@ export class HTMLParserFileListProvider implements IFileListProvider {
   fetch = (html: string): IFileListBodyResponse => {
     const dom = parse(html);
 
-    // Bug
+    // Bug (future implementation)
     // const filterCommits = dom.querySelector('a.text-mono');
     // const lastCommit = filterCommits.rawText;
 
