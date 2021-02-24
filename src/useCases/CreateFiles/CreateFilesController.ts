@@ -11,6 +11,7 @@ export class CreateFilesController {
       await this.createFilesUseCase.execute({ url: String(url) });
       return response.status(200).send();
     } catch (error) {
+      console.error(error);
       return response
         .status(400)
         .json({ error: error.message || 'Unexpected error' });

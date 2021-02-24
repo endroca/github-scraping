@@ -8,7 +8,9 @@
     "express": "^4.17.1",
     "jsdom": "^16.4.0",
     "node-html-parser": "^3.0.1",
-    "uuidv4": "^6.2.6"
+    "p-queue": "^6.6.2",
+    "rxjs": "^6.6.3",
+    "uuid": "^8.3.2"
   },
   "scripts": {
     "dev": "tsnd -r tsconfig-paths/register --ignore-watch node_modules --respawn --transpile-only src/server.ts"
@@ -16,7 +18,7 @@
   "devDependencies": {
     "@types/express": "^4.17.11",
     "@types/jsdom": "^16.2.6",
-    "@types/uuidv4": "^5.0.0",
+    "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^4.15.2",
     "@typescript-eslint/parser": "^4.15.2",
     "eslint": "^7.2.0",

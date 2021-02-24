@@ -1,4 +1,4 @@
-import { uuid } from 'uuidv4';
+import { v4 } from 'uuid';
 
 export class File {
   public readonly id: string;
@@ -15,7 +15,7 @@ export class File {
     Object.assign(this, props);
 
     if (!id) {
-      this.id = uuid();
+      this.id = v4();
     }
   }
 }

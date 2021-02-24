@@ -7,15 +7,12 @@ import {
 export class HTMLParserFileInfoProvider implements IFileInfoProvider {
   fetch = (html: string): IFileInfoResponse => {
     const dom = parse(html);
-
-    const filter = dom.querySelector('.text-mono');
-
-    console.log(filter);
-    console.log(filter.rawText);
+    const filter = dom.querySelector('div.text-mono');
+    const extract = /(.*)\n\s*(.*)/gi.exec(filter.rawText.trim());
 
     return {
-      length: filter.rawText,
-      size: filter.rawText,
+      length: extract[1],
+      size: extract[2],
     };
   };
 }

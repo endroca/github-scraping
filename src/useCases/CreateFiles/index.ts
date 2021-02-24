@@ -1,13 +1,14 @@
 import { AxiosProvider } from '@providers/implementations/AxiosProvider';
 import { HTMLParserFileInfoProvider } from '@providers/implementations/HTMLParserFileInfoProvider';
-import { HTMLParserListFilesProvider } from '@providers/implementations/HTMLParserListFilesProvider';
-import { LocalFilesRepository } from '@repositories/implementations/LocalFilesRepository';
+// import { HTMLParserFileListProvider } from '@providers/implementations/HTMLParserFileListProvider';
+import { LocalFilesRepository } from '@repositories/implementations/LocalFileRepository';
+import { ListAllFilesService } from 'services/ListAllFilesService';
 import { CreateFilesController } from './CreateFilesController';
 import { CreateFilesUseCase } from './CreateFilesUseCase';
 
-const fileListParser = new HTMLParserListFilesProvider();
 const fileInfoParser = new HTMLParserFileInfoProvider();
 const request = new AxiosProvider();
+const fileListParser = new ListAllFilesService(request);
 const filesRepository = new LocalFilesRepository();
 
 const createFilesUseCase = new CreateFilesUseCase(
