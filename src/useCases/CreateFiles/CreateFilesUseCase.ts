@@ -1,6 +1,3 @@
-import { IFilesRepository } from '@repositories/IFilesRepository';
-import { IFileInfoProvider } from '@providers/IFileInfoProvider';
-import { File } from '@entities/File';
 import { IListAllFilesService } from '@services/IListAllFilesService';
 import { IInfoAllFilesService } from '@services/IInfoAllFilesService';
 import { ICreateFilesRequestDTO } from './CreateFilesDTO';
@@ -8,12 +5,13 @@ import { ICreateFilesRequestDTO } from './CreateFilesDTO';
 export class CreateFilesUseCase {
   constructor(
     private fileListService: IListAllFilesService,
-    private fileInfoService: IInfoAllFilesService,
-    private filesRepository: IFilesRepository
+    private fileInfoService: IInfoAllFilesService
   ) {}
 
   async execute(data: ICreateFilesRequestDTO) {
-    const listOfFiles = await this.fileListService.run(data.url);
+    const listOfFiles = await this.fileListService.run(
+      `https://github.com/${data.user}/${data.repository}`
+    );
 
     const urls = listOfFiles.reduce((acc, values) => {
       const assing = [...acc, ...values.files];

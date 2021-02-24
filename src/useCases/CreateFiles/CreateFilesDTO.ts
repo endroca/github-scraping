@@ -1,3 +1,4 @@
 export interface ICreateFilesRequestDTO {
-  url: string;
+  user: string;
+  repository: string;
 }

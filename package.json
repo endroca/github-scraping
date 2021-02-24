@@ -6,14 +6,17 @@
   "dependencies": {
     "axios": "^0.21.1",
     "express": "^4.17.1",
+    "express-validator": "^6.10.0",
     "jsdom": "^16.4.0",
+    "node-cache": "^5.1.2",
     "node-html-parser": "^3.0.1",
     "p-queue": "^6.6.2",
     "rxjs": "^6.6.3",
     "uuid": "^8.3.2"
   },
   "scripts": {
-    "dev": "tsnd -r tsconfig-paths/register --ignore-watch node_modules --respawn --transpile-only src/server.ts"
+    "dev": "tsnd -r tsconfig-paths/register --ignore-watch node_modules --respawn --transpile-only src/server.ts",
+    "lint": "eslint"
   },
   "devDependencies": {
     "@types/express": "^4.17.11",

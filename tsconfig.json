@@ -9,7 +9,9 @@
       "@providers/*": ["providers/*"],
       "@repositories/*": ["repositories/*"],
       "@entities/*": ["entities/*"],
-      "@services/*": ["services/*"]
+      "@services/*": ["services/*"],
+      "@validators/*": ["validators/*"],
+      "@middlewares/*": ["middlewares/*"]
     }
   },
   "exclude": ["node_modules"],
