@@ -8,7 +8,7 @@ const cached = (duration?: number) => (
   res: Response,
   next: NextFunction
 ) => {
-  const key = `__express__${req.originalUrl}` || req.url;
+  const key = `express:${req.originalUrl}` || req.url;
   const cachedBody = cache.get(key);
   if (cachedBody) {
     res.json(cachedBody);

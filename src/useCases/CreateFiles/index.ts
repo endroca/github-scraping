@@ -2,7 +2,7 @@ import { AxiosProvider } from '@providers/implementations/AxiosProvider';
 import { HTMLParserFileInfoProvider } from '@providers/implementations/HTMLParserFileInfoProvider';
 import { HTMLParserFileListProvider } from '@providers/implementations/HTMLParserFileListProvider';
 import { InfoAllFilesService } from '@services/implementations/InfoAllFilesService';
-import { ListAllFilesService } from 'services/implementations/ListAllFilesService';
+import { ListAllFilesService } from '@services/implementations/ListAllFilesService';
 import { CreateFilesController } from './CreateFilesController';
 import { CreateFilesUseCase } from './CreateFilesUseCase';
 

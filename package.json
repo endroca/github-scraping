@@ -15,19 +15,30 @@
     "uuid": "^8.3.2"
   },
   "scripts": {
+    "start": "node dist/server.js",
+    "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
     "dev": "tsnd -r tsconfig-paths/register --ignore-watch node_modules --respawn --transpile-only src/server.ts",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "jest"
   },
   "devDependencies": {
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.13.1",
+    "@babel/node": "^7.13.0",
+    "@babel/preset-env": "^7.13.5",
+    "@babel/preset-typescript": "^7.13.0",
     "@types/express": "^4.17.11",
     "@types/jsdom": "^16.2.6",
     "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^4.15.2",
     "@typescript-eslint/parser": "^4.15.2",
+    "babel-plugin-module-resolver": "^4.1.0",
     "eslint": "^7.2.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-import-resolver-typescript": "^2.4.0",
     "eslint-plugin-import": "^2.22.1",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.5.2",
     "ts-node-dev": "^1.1.1",
     "tsconfig-paths": "^3.9.0",
     "typescript": "^4.1.5"
