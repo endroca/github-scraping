@@ -6,7 +6,7 @@ import { createFilesController } from './useCases/CreateFiles';
 
 const routes = Router();
 
-routes.get('/', CreatFilesValidator(), validate, cached(), (req, res) => {
+routes.get('/', CreatFilesValidator(), validate, cached(300), (req, res) => {
   createFilesController.handle(req, res);
 });
 

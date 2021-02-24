@@ -13,7 +13,8 @@ export class CreateFilesUseCase {
 
   async execute(data: ICreateFilesRequestDTO): Promise<ICreateFileResponseDTO> {
     const listOfFiles = await this.fileListService.run(
-      `https://github.com/${data.user}/${data.repository}`
+      `https://github.com/${data.user}/${data.repository}`,
+      data.concurrency
     );
 
     const urls = listOfFiles.reduce((acc, values) => {
@@ -21,7 +22,7 @@ export class CreateFilesUseCase {
       return assing;
     }, []);
 
-    const listOfInfos = await this.fileInfoService.run(urls);
+    const listOfInfos = await this.fileInfoService.run(urls, data.concurrency);
 
     return listOfInfos.reduce((rv, x) => {
       const assing = rv;

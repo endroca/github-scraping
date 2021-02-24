@@ -1,6 +1,7 @@
 export interface ICreateFilesRequestDTO {
   user: string;
   repository: string;
+  concurrency?: number;
 }
 
 interface FileResponseDTO {

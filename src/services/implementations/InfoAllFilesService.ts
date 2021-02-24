@@ -10,14 +10,21 @@ import { IFileListResponse } from '@providers/IFileListProvider';
 export class InfoAllFilesService implements IInfoAllFilesService {
   private data: IInfoAllFilesBodyResponse[] = [];
 
-  private queue = new PQueue({ concurrency: 1 });
+  private queue = new PQueue({ concurrency: 5 });
 
   constructor(
     private request: IRequestsProvider,
     private fileInfoParser: IFileInfoProvider
   ) {}
 
-  async run(url: IFileListResponse[]): Promise<IInfoAllFilesBodyResponse[]> {
+  async run(
+    url: IFileListResponse[],
+    concurrency?: number
+  ): Promise<IInfoAllFilesBodyResponse[]> {
+    if (concurrency) {
+      this.queue.concurrency = concurrency;
+    }
+
     url.forEach((r) => {
       this.queue.add(() => this.verify(r));
     });

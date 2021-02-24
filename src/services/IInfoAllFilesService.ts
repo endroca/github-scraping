@@ -6,5 +6,8 @@ export interface IInfoAllFilesBodyResponse
     IFileInfoResponse {}
 
 export interface IInfoAllFilesService {
-  run(url: IFileListResponse[]): Promise<IInfoAllFilesBodyResponse[]>;
+  run(
+    url: IFileListResponse[],
+    concurrency?: number
+  ): Promise<IInfoAllFilesBodyResponse[]>;
 }

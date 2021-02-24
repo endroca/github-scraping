@@ -9,14 +9,21 @@ import { IListAllFilesService } from '@services/IListAllFilesService';
 export class ListAllFilesService implements IListAllFilesService {
   private data: IFileListBodyResponse[] = [];
 
-  private queue = new PQueue({ concurrency: 1 });
+  private queue = new PQueue({ concurrency: 5 });
 
   constructor(
     private request: IRequestsProvider,
     private fileListParser: IFileListProvider
   ) {}
 
-  async run(url: string): Promise<IFileListBodyResponse[]> {
+  async run(
+    url: string,
+    concurrency?: number
+  ): Promise<IFileListBodyResponse[]> {
+    if (concurrency) {
+      this.queue.concurrency = concurrency;
+    }
+
     await this.queue.add(() => this.verify(url));
     await this.queue.onIdle();
 
