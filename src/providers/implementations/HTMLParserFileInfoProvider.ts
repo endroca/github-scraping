@@ -8,7 +8,7 @@ export class HTMLParserFileInfoProvider implements IFileInfoProvider {
   fetch = (html: string): IFileInfoResponse => {
     const dom = parse(html);
     const filter = dom.querySelector('div.text-mono');
-    const extract = /(.*)\n\s*(.*)/gi.exec(filter.rawText.trim());
+    const extract = /(.*)[\r\n\s]*(.*)/gi.exec(filter.rawText.trim());
 
     return {
       length: extract[1],

@@ -5,12 +5,13 @@ export class CreateFilesController {
   constructor(private createFilesUseCase: CreateFilesUseCase) {}
 
   async handle(request: Request, response: Response): Promise<Response> {
-    const { user, repository } = request.query;
+    const { user, repository, concurrency } = request.query;
 
     try {
       const data = await this.createFilesUseCase.execute({
         user: String(user),
         repository: String(repository),
+        concurrency: Number(concurrency),
       });
 
       return response.jsonCached(data);

@@ -1,5 +1,8 @@
-import { IListAllFilesService } from '@services/IListAllFilesService';
-import { IInfoAllFilesService } from '@services/IInfoAllFilesService';
+import { IRequestsProvider } from '@providers/IRequestsProvider';
+import { IFileListProvider } from '@providers/IFileListProvider';
+import { IFileInfoProvider } from '@providers/IFileInfoProvider';
+import { ListAllFilesService } from '@services/implementations/ListAllFilesService';
+import { InfoAllFilesService } from '@services/implementations/InfoAllFilesService';
 import {
   ICreateFileResponseDTO,
   ICreateFilesRequestDTO,
@@ -7,12 +10,18 @@ import {
 
 export class CreateFilesUseCase {
   constructor(
-    private fileListService: IListAllFilesService,
-    private fileInfoService: IInfoAllFilesService
+    private requestProvider: IRequestsProvider,
+    private fileListProvider: IFileListProvider,
+    private fileInfoProvider: IFileInfoProvider
   ) {}
 
   async execute(data: ICreateFilesRequestDTO): Promise<ICreateFileResponseDTO> {
-    const listOfFiles = await this.fileListService.run(
+    const fileListService = new ListAllFilesService(
+      this.requestProvider,
+      this.fileListProvider
+    );
+
+    const listOfFiles = await fileListService.run(
       `https://github.com/${data.user}/${data.repository}`,
       data.concurrency
     );
@@ -22,7 +31,12 @@ export class CreateFilesUseCase {
       return assing;
     }, []);
 
-    const listOfInfos = await this.fileInfoService.run(urls, data.concurrency);
+    const fileInfoService = new InfoAllFilesService(
+      this.requestProvider,
+      this.fileInfoProvider
+    );
+
+    const listOfInfos = await fileInfoService.run(urls, data.concurrency);
 
     return listOfInfos.reduce((rv, x) => {
       const assing = rv;
