@@ -79,7 +79,24 @@ describe('Parsers test', () => {
     const parser = new HTMLParserFileInfoProvider();
 
     const html = fs
-      .readFileSync(path.resolve(__dirname, 'pages', 'filePage.html'))
+      .readFileSync(path.resolve(__dirname, 'pages', 'fileTextPage.html'))
+      .toString();
+
+    const response = parser.fetch(html);
+
+    expect(response).toStrictEqual(data);
+  });
+
+  it('should parser file binary information', () => {
+    const data = {
+      length: null,
+      size: '32 KB',
+    };
+
+    const parser = new HTMLParserFileInfoProvider();
+
+    const html = fs
+      .readFileSync(path.resolve(__dirname, 'pages', 'fileBinaryPage.html'))
       .toString();
 
     const response = parser.fetch(html);
