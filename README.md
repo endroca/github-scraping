@@ -1,6 +1,6 @@
 # Github scraping
 
-By default the api uses a 300s cache system
+Project developed for a proof of concept
 
 ## Request files
 
@@ -13,6 +13,8 @@ GET /?user=endroca&repository=express-typeorm&concurrency=5
 | `user`        | `string` | **Required**, repository user                    |
 | `repository`  | `string` | **Required**, repository name                    |
 | `concurrency` | `number` | **Default = 5**, number of simultaneous requests |
+
+By default the api uses a 300s cache system
 
 ## Responses
 
