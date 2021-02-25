@@ -1,7 +1,11 @@
 {
-  "name": "web-sran",
+  "name": "github-scraping",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
+  "author": {
+    "name": "Andrew Neto",
+    "email": "eu@andrewneto.com"
+  },
   "license": "MIT",
   "dependencies": {
     "axios": "^0.21.1",
