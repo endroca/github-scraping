@@ -9,7 +9,7 @@ import { IListAllFilesService } from '@services/IListAllFilesService';
 export class ListAllFilesService implements IListAllFilesService {
   private data: IFileListBodyResponse[] = [];
 
-  private queue = new PQueue({ concurrency: 5 });
+  private queue = new PQueue({ concurrency: 1 });
 
   constructor(
     private request: IRequestsProvider,

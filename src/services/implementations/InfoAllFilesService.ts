@@ -10,7 +10,7 @@ import { IFileListResponse } from '@providers/IFileListProvider';
 export class InfoAllFilesService implements IInfoAllFilesService {
   private data: IInfoAllFilesBodyResponse[] = [];
 
-  private queue = new PQueue({ concurrency: 5 });
+  private queue = new PQueue({ concurrency: 1 });
 
   constructor(
     private request: IRequestsProvider,
